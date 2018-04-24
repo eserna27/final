@@ -23,10 +23,12 @@ public class Quotation {
     private String delivery;
     private float total;
     private int event_id;
+    private Product product;
     
     public Quotation(int id, int product_id, String extras, String delivery, float total){
         this.id = id;
         this.product_id = product_id;
+        this.product = Product.find(product_id);
         this.extras = extras;
         this.delivery = delivery;
         this.total = total;
@@ -86,5 +88,21 @@ public class Quotation {
     
     public int id(){
         return id;
+    }
+    
+    public String extras(){
+        return extras;
+    }
+    
+    public String delivery(){
+        return delivery;
+    }
+    
+    public String productName(){
+        return product.name();
+    }
+    
+    public float total(){
+        return total;
     }
 }

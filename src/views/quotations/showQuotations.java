@@ -33,6 +33,14 @@ public class showQuotations extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         displayId = new javax.swing.JLabel();
         btnReturn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        displayProduct = new javax.swing.JLabel();
+        lblExtras = new javax.swing.JLabel();
+        displayExtras = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        displayDelivery = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        displayTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,29 +53,69 @@ public class showQuotations extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Producto");
+
+        lblExtras.setText("Extras");
+
+        jLabel3.setText("Envio");
+
+        jLabel4.setText("Total");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(displayId)
-                .addContainerGap(284, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnReturn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnReturn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(displayId))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(lblExtras)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(displayTotal)
+                                    .addComponent(displayDelivery)
+                                    .addComponent(displayExtras)
+                                    .addComponent(displayProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 241, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(displayId)
+                    .addComponent(jLabel1))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(displayId))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(displayProduct))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblExtras)
+                    .addComponent(displayExtras))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(displayDelivery))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(displayTotal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(btnReturn)
                 .addContainerGap())
         );
@@ -84,6 +132,10 @@ public class showQuotations extends javax.swing.JFrame {
     public void setValues(Quotation quotation){
         eventId = quotation.eventId();
         displayId.setText(Integer.toString(quotation.id()));
+        displayProduct.setText(quotation.productName());
+        displayExtras.setText(quotation.extras());
+        displayDelivery.setText(quotation.delivery());
+        displayTotal.setText(Float.toString(quotation.total()));
     }
     
     /**
@@ -123,7 +175,15 @@ public class showQuotations extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReturn;
+    private javax.swing.JLabel displayDelivery;
+    private javax.swing.JLabel displayExtras;
     private javax.swing.JLabel displayId;
+    private javax.swing.JLabel displayProduct;
+    private javax.swing.JLabel displayTotal;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblExtras;
     // End of variables declaration//GEN-END:variables
 }

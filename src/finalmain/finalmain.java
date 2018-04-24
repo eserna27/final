@@ -5,6 +5,7 @@
  */
 package finalmain;
 
+import controller.UsersController;
 import model.Client;
 import model.Event;
 import model.Product;
@@ -21,7 +22,6 @@ public class finalmain {
         Product.createTableSql();
         Event.createTableSql();
         Quotation.createTableSql();       
-        indexUsers index = new indexUsers();
-        index.setVisible(true);
+        UsersController.index();
     }
 }

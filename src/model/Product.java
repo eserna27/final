@@ -54,6 +54,25 @@ public class Product {
         return products;
     }
     
+    public static Product find(int id){
+        createTableSql();
+        ResultSet result = ConnectionDB.getData("SELECT * FROM PRODUCTS WHERE ID = '"+id+"' ");
+        Product product = null;
+        try {
+            while(result.next()){
+                product = new Product(
+                        result.getInt("id"), 
+                        result.getString("name"), 
+                        result.getFloat("cost"), 
+                        result.getInt("minimum"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return product;
+    }
+    
     public static void createTableSql(){
          String sql = "CREATE TABLE IF NOT EXISTS PRODUCTS " +
                         "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
