@@ -29,7 +29,7 @@ public class ProductsController {
     
     public static void create(String [] params){
         if(paramsValidation(params)){
-            Product.create(params[0], params[1], params[2]);
+            Product.create(new Product(params[0], Float.parseFloat(params[1]), Integer.parseInt(params[2])));
             index();
         }else{
             newProducts product = new newProducts();

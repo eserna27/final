@@ -6,6 +6,7 @@
 package views.events;
 
 import controller.EventsController;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import model.Client;
 
@@ -76,11 +77,11 @@ public class newEvents extends javax.swing.JFrame {
 
         lblDate.setText("Dia");
 
-        inputDate.setText("DD/MM/AAAA");
+        inputDate.setToolTipText("yyyy-mm-dd");
 
         lblTime.setText("Hora");
 
-        inputTime.setText("HH:MM");
+        inputTime.setToolTipText("HH:MM");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

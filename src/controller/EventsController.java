@@ -42,7 +42,7 @@ public class EventsController {
     
     public static void create(String [] params){
         if(paramsValidation(params)){
-            Event.create(params[0], params[1], params[2], params[3]);
+            Event.create(new Event(Integer.parseInt(params[0]), params[1], params[2], params[3]));
             index();
         }else{
             newEvents event = new newEvents();
@@ -56,17 +56,12 @@ public class EventsController {
     }
     
     private static DefaultTableModel generateModelTable(){
-        try {
-            DefaultTableModel model = new DefaultTableModel();
-            model.setColumnIdentifiers(new Object[]{"Id", "Cliente", "Lugar", "Dia", "Hora", "Cotización"});
-            ArrayList <Event> events = Event.all();
-            for(Event event : events){
-                model.addRow(new Object[]{event.id(), event.clientName(), event.place(), event.date(), event.time(), event.quotation()});
-            }
-            return model;
-        } catch (ParseException ex) {
-            Logger.getLogger(EventsController.class.getName()).log(Level.SEVERE, null, ex);
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new Object[]{"Id", "Cliente", "Lugar", "Dia", "Hora", "Cotización"});
+        ArrayList <Event> events = Event.all();
+        for(Event event : events){
+            model.addRow(new Object[]{event.id(), event.clientName(), event.place(), event.date(), event.time(), event.quotation()});
         }
-        return null;
+        return model;
     }
 }
