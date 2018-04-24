@@ -6,6 +6,7 @@
 package views.users;
 
 import controller.ClientsController;
+import controller.EventsController;
 import controller.ProductsController;
 
 /**
@@ -32,7 +33,7 @@ public class indexUsers extends javax.swing.JFrame {
 
         btnIndexClients = new javax.swing.JButton();
         btnProducts = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnEvents = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +51,12 @@ public class indexUsers extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        btnEvents.setText("Ver eventos");
+        btnEvents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEventsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,7 +67,7 @@ public class indexUsers extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnIndexClients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEvents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(291, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +78,7 @@ public class indexUsers extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnProducts)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnEvents)
                 .addContainerGap(184, Short.MAX_VALUE))
         );
 
@@ -89,6 +95,11 @@ public class indexUsers extends javax.swing.JFrame {
         dispose();
         ProductsController.index();
     }//GEN-LAST:event_btnProductsActionPerformed
+
+    private void btnEventsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEventsActionPerformed
+        dispose();
+        EventsController.index();
+    }//GEN-LAST:event_btnEventsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,8 +137,8 @@ public class indexUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEvents;
     private javax.swing.JButton btnIndexClients;
     private javax.swing.JButton btnProducts;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
