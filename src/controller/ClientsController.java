@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import model.Client;
 import views.clients.indexClients;
 import views.clients.newClients;
@@ -16,6 +18,7 @@ import views.clients.newClients;
 public class ClientsController {
     public static void index(){
         indexClients index = new indexClients();
+        index.fillTable(generateModelTable());
         index.setVisible(true);
     }
     
@@ -39,5 +42,16 @@ public class ClientsController {
     private static boolean paramsValidation(String [] params){
         boolean valid = !params[0].isEmpty() && !params[1].isEmpty() && !params[2].isEmpty();
         return valid;
+    }
+    
+    private static DefaultTableModel generateModelTable(){
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new Object[]{"Id", "Nombre", "Celular", "Compañia"});
+        ArrayList <Client> clients = Client.all();
+        System.out.println(clients);
+        for(Client client : clients){
+            model.addRow(new Object[]{client.id(), client.name(), client.cellphone(), client.company()});
+        }
+        return model;
     }
 }
