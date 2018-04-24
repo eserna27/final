@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import model.Client;
 import model.Event;
 import views.events.indexEvents;
 import views.events.newEvents;
@@ -28,6 +29,7 @@ public class EventsController {
     
     public static void store(){
         newEvents event = new newEvents();
+        event.fillClientsOptions(Client.all());
         event.setVisible(true);
     }
     
