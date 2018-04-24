@@ -29,7 +29,7 @@ public class ClientsController {
     
     public static void create(String [] params){
         if(paramsValidation(params)){
-            Client.create(params[0], params[1], params[2]);
+            Client.create(new Client(params[0], params[1], params[2]));
             index();
         }else{
             newClients client = new newClients();

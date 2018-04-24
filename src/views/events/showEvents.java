@@ -14,7 +14,7 @@ import model.Event;
  * @author BenitoH
  */
 public class showEvents extends javax.swing.JFrame {
-
+    private int EventId;
     /**
      * Creates new form showEvents
      */
@@ -111,7 +111,8 @@ public class showEvents extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnQuotation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReturn)))
+                        .addComponent(btnReturn)
+                        .addGap(27, 27, 27)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -159,12 +160,12 @@ public class showEvents extends javax.swing.JFrame {
 
     private void btnQuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuotationActionPerformed
         dispose();
-        QuotationController.store();
+        QuotationController.store(EventId);
     }//GEN-LAST:event_btnQuotationActionPerformed
 
     private void btnShowQuotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowQuotationActionPerformed
         dispose();
-        QuotationController.show();
+        QuotationController.show(EventId);
     }//GEN-LAST:event_btnShowQuotationActionPerformed
 
     /**
@@ -207,10 +208,9 @@ public class showEvents extends javax.swing.JFrame {
         displayPlace.setText(event.place());
         displayDate.setText(event.date());
         displayTime.setText(event.time());
-        btnShowQuotation.setVisible(event.quotation());
-        btnQuotation.setVisible(!event.quotation());
-        displayEventId.setText(String.valueOf(event.id()));
-        displayEventId.setVisible(false);
+        btnShowQuotation.setVisible(event.hasQuotation());
+        btnQuotation.setVisible(!event.hasQuotation());
+        EventId = event.id();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
