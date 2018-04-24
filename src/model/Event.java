@@ -43,6 +43,10 @@ public class Event {
         return event;
     }
     
+    public static void create(String clientId, String place, String date, String time){
+        
+    }
+    
     public int id(){
         return id;
     }

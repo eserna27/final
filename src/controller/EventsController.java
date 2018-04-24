@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import model.Client;
 import model.Event;
 import views.events.indexEvents;
 import views.events.newEvents;
@@ -28,6 +29,7 @@ public class EventsController {
     
     public static void store(){
         newEvents event = new newEvents();
+        event.fillClientsOptions(Client.all());
         event.setVisible(true);
     }
     
@@ -36,6 +38,21 @@ public class EventsController {
         showEvents show = new showEvents();
         show.setValues(event);
         show.setVisible(true);
+    }
+    
+    public static void create(String [] params){
+        if(paramsValidation(params)){
+            Event.create(params[0], params[1], params[2], params[3]);
+            index();
+        }else{
+            newEvents event = new newEvents();
+            event.setVisible(true);
+        }
+    }
+    
+    private static boolean paramsValidation(String [] params){
+        boolean valid = !params[0].isEmpty() && !params[1].isEmpty() && !params[2].isEmpty();
+        return valid;
     }
     
     private static DefaultTableModel generateModelTable(){
