@@ -7,6 +7,7 @@ package views.events;
 
 import controller.EventsController;
 import controller.UsersController;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,6 +34,8 @@ public class indexEvents extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         btnNew = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEvents = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,31 +55,54 @@ public class indexEvents extends javax.swing.JFrame {
             }
         });
 
+        tblEvents.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblEvents.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblEventsMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblEvents);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 278, Short.MAX_VALUE)
-                .addComponent(btnNew)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnNew))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReturn)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnReturn)
-                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle)
                     .addComponent(btnNew))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnReturn)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -93,6 +119,20 @@ public class indexEvents extends javax.swing.JFrame {
         EventsController.store();
     }//GEN-LAST:event_btnNewActionPerformed
 
+    private void tblEventsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEventsMousePressed
+        dispose();
+        EventsController.show(selectedEventId());
+    }//GEN-LAST:event_tblEventsMousePressed
+    
+    private int selectedEventId(){
+        int row = tblEvents.getSelectedRow();
+        int id=(int) tblEvents.getValueAt(row, 0);
+        return id;
+    }
+    
+    public void fillTable(DefaultTableModel model){
+        tblEvents.setModel(model);
+    }
     /**
      * @param args the command line arguments
      */
@@ -131,6 +171,8 @@ public class indexEvents extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnReturn;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblEvents;
     // End of variables declaration//GEN-END:variables
 }

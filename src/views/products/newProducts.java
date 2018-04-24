@@ -32,12 +32,27 @@ public class newProducts extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblName = new javax.swing.JLabel();
+        inputName = new javax.swing.JTextField();
+        lblCost = new javax.swing.JLabel();
+        inputCost = new javax.swing.JTextField();
+        lblMinimum = new javax.swing.JLabel();
+        inputMinimum = new javax.swing.JTextField();
+        lblErrorName = new javax.swing.JLabel();
+        lblErrorCost = new javax.swing.JLabel();
+        lblErrorMinimum = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTitle.setText("Nuevo");
 
         btnCreate.setText("Guardar");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancelar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -46,19 +61,87 @@ public class newProducts extends javax.swing.JFrame {
             }
         });
 
+        lblName.setText("Nombre");
+
+        lblCost.setText("Costo");
+
+        lblMinimum.setText("Minimo");
+
+        lblErrorName.setVisible(false);
+        lblErrorName.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorName.setText("No pueden estar en blanco");
+
+        lblErrorCost.setVisible(false);
+        lblErrorCost.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorCost.setText("No pueden estar en blanco");
+
+        lblErrorMinimum.setVisible(false);
+        lblErrorMinimum.setForeground(new java.awt.Color(255, 0, 51));
+        lblErrorMinimum.setText("No pueden estar en blanco");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCost)
+                    .addComponent(lblMinimum)
+                    .addComponent(lblName))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputName)
+                    .addComponent(inputMinimum, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(inputCost)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErrorMinimum)
+                            .addComponent(lblErrorCost)
+                            .addComponent(lblErrorName))
+                        .addGap(0, 245, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(inputName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblErrorName)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCost))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblErrorCost)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputMinimum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMinimum))
+                .addGap(18, 18, 18)
+                .addComponent(lblErrorMinimum)
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
-                .addComponent(btnCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCreate)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCreate))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -66,7 +149,9 @@ public class newProducts extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCreate)
                     .addComponent(btnCancel))
@@ -82,6 +167,28 @@ public class newProducts extends javax.swing.JFrame {
         ProductsController.index();
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        dispose();
+        ProductsController.create(paramsProducts());
+    }//GEN-LAST:event_btnCreateActionPerformed
+        
+     private String[] paramsProducts(){
+        String [] params =  {inputName.getText(), inputCost.getText(), inputMinimum.getText()};
+        return params;
+    }
+    
+     public void showErrors(boolean errorName, boolean errorCost, boolean errorMinimum){
+        if(errorName) lblErrorName.setVisible(errorName);
+        if(errorCost) lblErrorCost.setVisible(errorCost);
+        if(errorMinimum) lblErrorMinimum.setVisible(errorMinimum);
+    }
+    
+    public void setValues(String name, String cost, String minimum){
+        inputName.setText(name);
+        inputCost.setText(cost);
+        inputMinimum.setText(minimum);
+    }
+     
     /**
      * @param args the command line arguments
      */
@@ -120,6 +227,16 @@ public class newProducts extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreate;
+    private javax.swing.JTextField inputCost;
+    private javax.swing.JTextField inputMinimum;
+    private javax.swing.JTextField inputName;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCost;
+    private javax.swing.JLabel lblErrorCost;
+    private javax.swing.JLabel lblErrorMinimum;
+    private javax.swing.JLabel lblErrorName;
+    private javax.swing.JLabel lblMinimum;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

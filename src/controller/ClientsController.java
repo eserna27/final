@@ -48,7 +48,6 @@ public class ClientsController {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new Object[]{"Id", "Nombre", "Celular", "Compañia"});
         ArrayList <Client> clients = Client.all();
-        System.out.println(clients);
         for(Client client : clients){
             model.addRow(new Object[]{client.id(), client.name(), client.cellphone(), client.company()});
         }

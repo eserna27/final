@@ -27,11 +27,27 @@ public class ProductsController {
         product.setVisible(true);
     }
     
+    public static void create(String [] params){
+        if(paramsValidation(params)){
+            Product.create(params[0], params[1], params[2]);
+            index();
+        }else{
+            newProducts product = new newProducts();
+            product.setVisible(true);
+            product.showErrors(params[0].isEmpty(), params[1].isEmpty(), params[2].isEmpty());
+            product.setValues(params[0], params[1], params[2]);
+        }
+    }
+    
+    private static boolean paramsValidation(String [] params){
+        boolean valid = !params[0].isEmpty() && !params[1].isEmpty() && !params[2].isEmpty();
+        return valid;
+    }
+    
     private static DefaultTableModel generateModelTable(){
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new Object[]{"Id", "Nombre", "Precio", "Minimo"});
         ArrayList <Product> products = Product.all();
-        System.out.println(products);
         for(Product product : products){
             model.addRow(new Object[]{product.id(), product.name(), product.cost(), product.minimum()});
         }

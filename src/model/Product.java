@@ -35,6 +35,10 @@ public class Product {
         products.add(new Product(1, "Elote", (float) 25.0, 25));
         return products;
     }
+     
+    public static boolean create(String name, String cost, String minimum){
+        return true;
+    }
     
     public int id(){
         return id;

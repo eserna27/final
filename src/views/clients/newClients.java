@@ -175,10 +175,10 @@ public class newClients extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         dispose();
-        ClientsController.create(parmasClient());
+        ClientsController.create(paramsClient());
     }//GEN-LAST:event_btnCreateActionPerformed
 
-    private String[] parmasClient(){
+    private String[] paramsClient(){
         String [] params =  {inputName.getText(), inputCellphone.getText(), inputCompany.getText()};
         return params;
     }
