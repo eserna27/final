@@ -40,6 +40,21 @@ public class EventsController {
         show.setVisible(true);
     }
     
+    public static void create(String [] params){
+        if(paramsValidation(params)){
+            Event.create(params[0], params[1], params[2], params[3]);
+            index();
+        }else{
+            newEvents event = new newEvents();
+            event.setVisible(true);
+        }
+    }
+    
+    private static boolean paramsValidation(String [] params){
+        boolean valid = !params[0].isEmpty() && !params[1].isEmpty() && !params[2].isEmpty();
+        return valid;
+    }
+    
     private static DefaultTableModel generateModelTable(){
         try {
             DefaultTableModel model = new DefaultTableModel();

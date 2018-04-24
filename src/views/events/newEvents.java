@@ -50,6 +50,11 @@ public class newEvents extends javax.swing.JFrame {
         lblTitle.setText("Nuevo");
 
         btnCreate.setText("Guardar");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancelar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +169,17 @@ public class newEvents extends javax.swing.JFrame {
         dispose();
         EventsController.index();
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        dispose();
+        EventsController.create(paramsEvent());
+    }//GEN-LAST:event_btnCreateActionPerformed
+    
+    private String[] paramsEvent(){
+        String[] clientSelected = cmbClients.getSelectedItem().toString().split(" ");
+        String [] params =  {clientSelected[0], inputPlace.getText(), inputDate.getText(), inputTime.getText()};
+        return params;
+    }
     
     public void fillClientsOptions(ArrayList<Client> clients){
         for(Client client : clients){
